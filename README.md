@@ -11,7 +11,7 @@ pip install -r requirements.txt
 
 2. Start the system:
 ```bash
-.\start.bat
+python start.py
 ```
 This will open two windows:
 - Server window: Shows the server is running. Keep this window open.
@@ -183,7 +183,7 @@ pip install -r requirements.txt
 ### 2. Test Main System
 ```bash
 # Start the system
-.\start.bat
+python start.py
 
 # Try some commands in the client window:
 movies> movies
@@ -261,7 +261,7 @@ Your service should:
 ### Core System Files
 1. `client.py` - Interactive CLI interface
 2. `server.py` - Backend server with REST API
-3. `start.bat` - Startup script for the system
+3. `start.py` - Cross-platform startup script
 
 ### Data Files
 1. `data/movies.json` - Movie database
