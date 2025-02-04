@@ -1,0 +1,286 @@
+2025-02-04 14:17:00,141 INFO:Setting up movie service...
+2025-02-04 14:17:00,141 INFO:Server setup complete. Starting Flask server.
+2025-02-04 14:25:17,703 INFO:Setting up movie service...
+2025-02-04 14:25:17,703 INFO:Server setup complete. Starting Flask server.
+2025-02-04 14:27:07,345 INFO:Setting up movie service...
+2025-02-04 14:27:07,346 INFO:Server setup complete. Starting Flask server.
+2025-02-04 14:29:27,869 INFO:Setting up movie service...
+2025-02-04 14:29:27,871 INFO:Server setup complete. Starting Flask server.
+2025-02-04 14:30:15,304 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 14:30:15,304 INFO:Read data from data\movies.json.
+2025-02-04 14:30:15,305 INFO:Returning 5 movies
+2025-02-04 14:30:48,011 INFO:Received GET request on /movies/search/dark knight with query: dark knight
+2025-02-04 14:30:48,011 INFO:Read data from data\movies.json.
+2025-02-04 14:30:48,011 INFO:Search query 'dark knight' returned 1 results.
+2025-02-04 14:30:50,365 INFO:Received POST request on /history/1/1 for user_id: 1, movie_id: 1
+2025-02-04 14:30:50,365 INFO:Read data from data\movies.json.
+2025-02-04 14:30:50,365 INFO:Read data from data\history.json.
+2025-02-04 14:30:50,366 INFO:Wrote data to data\history.json.
+2025-02-04 14:30:50,366 INFO:Added movie id 1 to history for user_id: 1
+2025-02-04 14:31:03,128 INFO:Received GET request on /history/1 for user_id: 1
+2025-02-04 14:31:03,133 INFO:Read data from data\history.json.
+2025-02-04 14:31:03,133 INFO:Retrieved watch history for user_id: 1, 1 entries found.
+2025-02-04 14:31:17,265 INFO:Received POST request on /preferences/1 for user_id: 1
+2025-02-04 14:31:17,266 INFO:Read data from data\preferences.json.
+2025-02-04 14:31:17,266 INFO:Wrote data to data\preferences.json.
+2025-02-04 14:31:17,266 INFO:Saved preferences for user_id: 1
+2025-02-04 14:35:35,159 INFO:Setting up movie service...
+2025-02-04 14:35:35,160 INFO:Server setup complete. Starting Flask server.
+2025-02-04 14:36:18,687 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 14:36:18,687 INFO:Read data from data\movies.json.
+2025-02-04 14:36:18,687 INFO:Returning 5 movies
+2025-02-04 14:36:28,299 INFO:Received GET request on /movies/search/matrix with query: matrix
+2025-02-04 14:36:28,299 INFO:Read data from data\movies.json.
+2025-02-04 14:36:28,299 INFO:Search query 'matrix' returned 1 results.
+2025-02-04 14:36:45,138 INFO:Received POST request on /history/1/3 for user_id: 1, movie_id: 3
+2025-02-04 14:36:45,138 INFO:Read data from data\movies.json.
+2025-02-04 14:36:45,138 INFO:Read data from data\history.json.
+2025-02-04 14:36:45,139 INFO:Wrote data to data\history.json.
+2025-02-04 14:36:45,139 INFO:Added movie id 3 to history for user_id: 1
+2025-02-04 14:36:58,591 INFO:Received GET request on /history/1 for user_id: 1
+2025-02-04 14:36:58,595 INFO:Read data from data\history.json.
+2025-02-04 14:36:58,595 INFO:Retrieved watch history for user_id: 1, 2 entries found.
+2025-02-04 14:37:00,277 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 14:37:00,277 INFO:Read data from data\movies.json.
+2025-02-04 14:37:00,277 INFO:Returning 5 movies
+2025-02-04 14:40:31,646 INFO:Setting up movie service...
+2025-02-04 14:40:31,646 INFO:Server setup complete. Starting Flask server.
+2025-02-04 14:41:22,385 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 14:41:22,386 INFO:Read data from data\movies.json.
+2025-02-04 14:41:22,386 INFO:Returning 5 movies
+2025-02-04 14:41:55,456 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 14:41:55,456 INFO:Read data from data\movies.json.
+2025-02-04 14:41:55,456 INFO:Returning 5 movies
+2025-02-04 14:42:49,554 INFO:Setting up movie service...
+2025-02-04 14:42:49,555 INFO:Server setup complete. Starting Flask server.
+2025-02-04 14:43:05,577 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 14:43:05,582 INFO:Read data from data\movies.json.
+2025-02-04 14:43:05,582 INFO:Returning 20 movies
+2025-02-04 14:48:55,808 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 14:48:55,808 INFO:Read data from data\movies.json.
+2025-02-04 14:48:55,808 INFO:Returning 20 movies
+2025-02-04 14:49:41,057 INFO:Received POST request on /preferences/1 for user_id: 1
+2025-02-04 14:49:41,058 INFO:Read data from data\preferences.json.
+2025-02-04 14:49:41,058 INFO:Wrote data to data\preferences.json.
+2025-02-04 14:49:41,059 INFO:Saved preferences for user_id: 1
+2025-02-04 14:49:45,105 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 14:49:45,106 INFO:Read data from data\movies.json.
+2025-02-04 14:49:45,106 INFO:Returning 20 movies
+2025-02-04 14:50:38,052 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 14:50:38,052 INFO:Read data from data\movies.json.
+2025-02-04 14:50:38,052 INFO:Returning 20 movies
+2025-02-04 14:56:19,631 INFO:Setting up movie service...
+2025-02-04 14:56:19,632 INFO:Server setup complete. Starting Flask server.
+2025-02-04 14:56:31,618 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 14:56:31,618 INFO:Read data from data\movies.json.
+2025-02-04 14:56:31,618 INFO:Returning 20 movies
+2025-02-04 14:56:35,145 INFO:Received POST request on /history/1/19 for user_id: 1, movie_id: 19
+2025-02-04 14:56:35,146 INFO:Read data from data\movies.json.
+2025-02-04 14:56:35,146 INFO:Read data from data\history.json.
+2025-02-04 14:56:35,146 INFO:Wrote data to data\history.json.
+2025-02-04 14:56:35,147 INFO:Added movie id 19 to history for user_id: 1
+2025-02-04 14:56:49,433 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 14:56:49,433 INFO:Read data from data\movies.json.
+2025-02-04 14:56:49,434 INFO:Returning 20 movies
+2025-02-04 14:57:05,498 INFO:Received POST request on /preferences/1 for user_id: 1
+2025-02-04 14:57:05,499 INFO:Read data from data\preferences.json.
+2025-02-04 14:57:05,499 INFO:Wrote data to data\preferences.json.
+2025-02-04 14:57:05,499 INFO:Saved preferences for user_id: 1
+2025-02-04 15:00:35,457 INFO:Setting up movie service...
+2025-02-04 15:00:35,458 INFO:Server setup complete. Starting Flask server.
+2025-02-04 15:00:43,716 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 15:00:43,717 INFO:Read data from data\movies.json.
+2025-02-04 15:00:43,717 INFO:Returning 20 movies
+2025-02-04 15:00:51,092 INFO:Received POST request on /history/1/20 for user_id: 1, movie_id: 20
+2025-02-04 15:00:51,093 INFO:Read data from data\movies.json.
+2025-02-04 15:00:51,097 INFO:Read data from data\history.json.
+2025-02-04 15:00:51,098 INFO:Wrote data to data\history.json.
+2025-02-04 15:00:51,098 INFO:Added movie id 20 to history for user_id: 1
+2025-02-04 15:01:06,216 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 15:01:06,217 INFO:Read data from data\movies.json.
+2025-02-04 15:01:06,217 INFO:Returning 20 movies
+2025-02-04 15:01:13,216 INFO:Received POST request on /preferences/1 for user_id: 1
+2025-02-04 15:01:13,219 INFO:Read data from data\preferences.json.
+2025-02-04 15:01:13,220 INFO:Wrote data to data\preferences.json.
+2025-02-04 15:01:13,220 INFO:Saved preferences for user_id: 1
+2025-02-04 15:03:53,428 INFO:Setting up movie service...
+2025-02-04 15:03:53,429 INFO:Server setup complete. Starting Flask server.
+2025-02-04 15:04:00,744 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 15:04:00,744 INFO:Read data from data\movies.json.
+2025-02-04 15:04:00,744 INFO:Returning 20 movies
+2025-02-04 15:04:04,370 INFO:Received POST request on /history/1/19 for user_id: 1, movie_id: 19
+2025-02-04 15:04:04,370 INFO:Read data from data\movies.json.
+2025-02-04 15:04:04,374 INFO:Read data from data\history.json.
+2025-02-04 15:04:04,375 INFO:Wrote data to data\history.json.
+2025-02-04 15:04:04,375 INFO:Added movie id 19 to history for user_id: 1
+2025-02-04 15:04:37,438 INFO:Received GET request on /history/1 for user_id: 1
+2025-02-04 15:04:37,443 INFO:Read data from data\history.json.
+2025-02-04 15:04:37,443 INFO:Retrieved watch history for user_id: 1, 5 entries found.
+2025-02-04 15:04:46,814 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 15:04:46,815 INFO:Read data from data\movies.json.
+2025-02-04 15:04:46,815 INFO:Returning 20 movies
+2025-02-04 15:04:48,308 INFO:Setting up movie service...
+2025-02-04 15:04:48,308 INFO:Server setup complete. Starting Flask server.
+2025-02-04 15:05:14,624 INFO:Setting up movie service...
+2025-02-04 15:05:14,624 INFO:Server setup complete. Starting Flask server.
+2025-02-04 15:05:22,327 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 15:05:22,327 INFO:Read data from data\movies.json.
+2025-02-04 15:05:22,328 INFO:Returning 20 movies
+2025-02-04 15:05:24,251 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 15:05:24,252 INFO:Read data from data\movies.json.
+2025-02-04 15:05:24,252 INFO:Returning 20 movies
+2025-02-04 15:05:42,848 INFO:Received POST request on /preferences/1 for user_id: 1
+2025-02-04 15:05:42,848 INFO:Read data from data\preferences.json.
+2025-02-04 15:05:42,849 INFO:Wrote data to data\preferences.json.
+2025-02-04 15:05:42,849 INFO:Saved preferences for user_id: 1
+2025-02-04 15:12:01,124 INFO:Received POST request on /preferences/1 for user_id: 1
+2025-02-04 15:12:01,124 WARNING:Preferences: Invalid Content-Type
+2025-02-04 15:12:32,970 INFO:Setting up movie service...
+2025-02-04 15:12:32,970 INFO:Server setup complete. Starting Flask server.
+2025-02-04 15:12:43,752 INFO:Received POST request on /preferences/1 for user_id: 1
+2025-02-04 15:12:43,752 WARNING:Preferences: Invalid Content-Type
+2025-02-04 15:12:44,695 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 15:12:44,695 INFO:Read data from data\movies.json.
+2025-02-04 15:12:44,695 INFO:Returning 20 movies
+2025-02-04 15:13:14,946 INFO:Received POST request on /preferences/1 for user_id: 1
+2025-02-04 15:13:14,951 INFO:Read data from data\preferences.json.
+2025-02-04 15:13:14,952 INFO:Wrote data to data\preferences.json.
+2025-02-04 15:13:14,952 INFO:Saved preferences for user_id: 1
+2025-02-04 15:13:52,904 INFO:Setting up movie service...
+2025-02-04 15:13:52,905 INFO:Server setup complete. Starting Flask server.
+2025-02-04 15:14:04,353 INFO:Received POST request on /preferences/1 for user_id: 1
+2025-02-04 15:14:04,353 WARNING:Preferences: Invalid Content-Type
+2025-02-04 15:14:43,132 INFO:Received GET request on /preferences/1 for user_id: 1
+2025-02-04 15:14:43,135 INFO:Read data from data\preferences.json.
+2025-02-04 15:14:43,140 INFO:Received POST request on /preferences/1 for user_id: 1
+2025-02-04 15:14:43,141 INFO:Read data from data\preferences.json.
+2025-02-04 15:14:43,141 INFO:Wrote data to data\preferences.json.
+2025-02-04 15:14:43,141 INFO:Saved preferences for user_id: 1
+2025-02-04 15:15:10,880 INFO:Setting up movie service...
+2025-02-04 15:15:10,880 INFO:Server setup complete. Starting Flask server.
+2025-02-04 15:15:21,872 INFO:Received GET request on /preferences/1 for user_id: 1
+2025-02-04 15:15:21,877 INFO:Read data from data\preferences.json.
+2025-02-04 15:15:21,882 INFO:Received POST request on /preferences/1 for user_id: 1
+2025-02-04 15:15:21,882 INFO:Read data from data\preferences.json.
+2025-02-04 15:15:21,883 INFO:Wrote data to data\preferences.json.
+2025-02-04 15:15:21,883 INFO:Saved preferences for user_id: 1
+2025-02-04 15:15:41,170 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 15:15:41,170 INFO:Read data from data\movies.json.
+2025-02-04 15:15:41,171 INFO:Returning 20 movies
+2025-02-04 15:15:51,846 INFO:Received POST request on /preferences/1 for user_id: 1
+2025-02-04 15:15:51,849 INFO:Read data from data\preferences.json.
+2025-02-04 15:15:51,850 INFO:Wrote data to data\preferences.json.
+2025-02-04 15:15:51,850 INFO:Saved preferences for user_id: 1
+2025-02-04 15:15:54,493 INFO:Received GET request on /preferences/1 for user_id: 1
+2025-02-04 15:15:54,498 INFO:Read data from data\preferences.json.
+2025-02-04 15:15:54,500 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 15:15:54,500 INFO:Read data from data\movies.json.
+2025-02-04 15:15:54,500 INFO:Returning 20 movies
+2025-02-04 15:16:02,889 INFO:Received GET request on /preferences/1 for user_id: 1
+2025-02-04 15:16:02,889 INFO:Read data from data\preferences.json.
+2025-02-04 15:16:02,891 INFO:Received POST request on /preferences/1 for user_id: 1
+2025-02-04 15:16:02,891 INFO:Read data from data\preferences.json.
+2025-02-04 15:16:02,891 INFO:Wrote data to data\preferences.json.
+2025-02-04 15:16:02,891 INFO:Saved preferences for user_id: 1
+2025-02-04 15:16:08,368 INFO:Received GET request on /preferences/1 for user_id: 1
+2025-02-04 15:16:08,372 INFO:Read data from data\preferences.json.
+2025-02-04 15:16:08,374 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 15:16:08,374 INFO:Read data from data\movies.json.
+2025-02-04 15:16:08,374 INFO:Returning 20 movies
+2025-02-04 15:16:11,277 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 15:16:11,277 INFO:Read data from data\movies.json.
+2025-02-04 15:16:11,277 INFO:Returning 20 movies
+2025-02-04 15:16:39,531 INFO:Received POST request on /history/1/16 for user_id: 1, movie_id: 16
+2025-02-04 15:16:39,532 INFO:Read data from data\movies.json.
+2025-02-04 15:16:39,532 INFO:Read data from data\history.json.
+2025-02-04 15:16:39,532 INFO:Wrote data to data\history.json.
+2025-02-04 15:16:39,532 INFO:Added movie id 16 to history for user_id: 1
+2025-02-04 15:16:52,116 INFO:Received POST request on /history/1/20 for user_id: 1, movie_id: 20
+2025-02-04 15:16:52,116 INFO:Read data from data\movies.json.
+2025-02-04 15:16:52,122 INFO:Read data from data\history.json.
+2025-02-04 15:16:52,122 INFO:Wrote data to data\history.json.
+2025-02-04 15:16:52,122 INFO:Added movie id 20 to history for user_id: 1
+2025-02-04 15:16:54,419 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 15:16:54,419 INFO:Read data from data\movies.json.
+2025-02-04 15:16:54,419 INFO:Returning 20 movies
+2025-02-04 15:16:58,788 INFO:Received POST request on /preferences/1 for user_id: 1
+2025-02-04 15:16:58,788 INFO:Read data from data\preferences.json.
+2025-02-04 15:16:58,789 INFO:Wrote data to data\preferences.json.
+2025-02-04 15:16:58,789 INFO:Saved preferences for user_id: 1
+2025-02-04 15:17:00,718 INFO:Received GET request on /preferences/1 for user_id: 1
+2025-02-04 15:17:00,722 INFO:Read data from data\preferences.json.
+2025-02-04 15:17:00,723 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 15:17:00,723 INFO:Read data from data\movies.json.
+2025-02-04 15:17:00,723 INFO:Returning 20 movies
+2025-02-04 15:22:12,722 INFO:Setting up movie service...
+2025-02-04 15:22:12,723 INFO:Server setup complete. Starting Flask server.
+2025-02-04 15:22:18,461 INFO:Received GET request on /preferences/1 for user_id: 1
+2025-02-04 15:22:18,461 INFO:Read data from data\preferences.json.
+2025-02-04 15:22:18,461 INFO:Read data from data\movies.json.
+2025-02-04 15:22:18,466 INFO:Received POST request on /preferences/1 for user_id: 1
+2025-02-04 15:22:18,466 INFO:Read data from data\movies.json.
+2025-02-04 15:22:18,466 INFO:Read data from data\preferences.json.
+2025-02-04 15:22:18,467 INFO:Wrote data to data\preferences.json.
+2025-02-04 15:22:18,467 INFO:Saved preferences for user_id: 1
+2025-02-04 15:22:20,685 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 15:22:20,685 INFO:Read data from data\movies.json.
+2025-02-04 15:22:20,686 INFO:Returning 20 movies
+2025-02-04 15:22:24,975 INFO:Received POST request on /history/1/18 for user_id: 1, movie_id: 18
+2025-02-04 15:22:24,976 INFO:Read data from data\movies.json.
+2025-02-04 15:22:24,981 INFO:Read data from data\history.json.
+2025-02-04 15:22:24,982 INFO:Wrote data to data\history.json.
+2025-02-04 15:22:24,982 INFO:Added movie id 18 to history for user_id: 1
+2025-02-04 15:22:24,984 INFO:Received POST request on /history/1/19 for user_id: 1, movie_id: 19
+2025-02-04 15:22:24,984 INFO:Read data from data\movies.json.
+2025-02-04 15:22:24,987 INFO:Read data from data\history.json.
+2025-02-04 15:22:24,987 INFO:Wrote data to data\history.json.
+2025-02-04 15:22:24,987 INFO:Added movie id 19 to history for user_id: 1
+2025-02-04 15:22:24,989 INFO:Received POST request on /history/1/20 for user_id: 1, movie_id: 20
+2025-02-04 15:22:24,989 INFO:Read data from data\movies.json.
+2025-02-04 15:22:24,992 INFO:Read data from data\history.json.
+2025-02-04 15:22:24,992 INFO:Wrote data to data\history.json.
+2025-02-04 15:22:24,992 INFO:Added movie id 20 to history for user_id: 1
+2025-02-04 15:22:33,689 INFO:Received GET request on /history/1 for user_id: 1
+2025-02-04 15:22:33,696 INFO:Read data from data\history.json.
+2025-02-04 15:22:33,696 INFO:Retrieved watch history for user_id: 1, 10 entries found.
+2025-02-04 15:22:42,045 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 15:22:42,045 INFO:Read data from data\movies.json.
+2025-02-04 15:22:42,045 INFO:Returning 20 movies
+2025-02-04 15:22:42,498 INFO:Received GET request on /preferences/1 for user_id: 1
+2025-02-04 15:22:42,501 INFO:Read data from data\preferences.json.
+2025-02-04 15:22:42,502 INFO:Read data from data\movies.json.
+2025-02-04 15:22:42,506 INFO:Received POST request on /preferences/1 for user_id: 1
+2025-02-04 15:22:42,506 INFO:Read data from data\movies.json.
+2025-02-04 15:22:42,506 INFO:Read data from data\preferences.json.
+2025-02-04 15:22:42,507 INFO:Wrote data to data\preferences.json.
+2025-02-04 15:22:42,507 INFO:Saved preferences for user_id: 1
+2025-02-04 15:22:52,455 INFO:Received POST request on /preferences/1 for user_id: 1
+2025-02-04 15:22:52,455 INFO:Read data from data\movies.json.
+2025-02-04 15:22:52,460 INFO:Read data from data\preferences.json.
+2025-02-04 15:22:52,460 INFO:Wrote data to data\preferences.json.
+2025-02-04 15:22:52,460 INFO:Saved preferences for user_id: 1
+2025-02-04 15:22:57,135 INFO:Received GET request on /preferences/1 for user_id: 1
+2025-02-04 15:22:57,139 INFO:Read data from data\preferences.json.
+2025-02-04 15:22:57,139 INFO:Read data from data\movies.json.
+2025-02-04 15:22:57,141 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 15:22:57,141 INFO:Read data from data\movies.json.
+2025-02-04 15:22:57,141 INFO:Returning 20 movies
+2025-02-04 15:23:03,387 INFO:Setting up movie service...
+2025-02-04 15:23:03,387 INFO:Server setup complete. Starting Flask server.
+2025-02-04 15:23:10,527 INFO:Received GET request on /preferences/1 for user_id: 1
+2025-02-04 15:23:10,527 INFO:Read data from data\preferences.json.
+2025-02-04 15:23:10,527 INFO:Read data from data\movies.json.
+2025-02-04 15:23:10,532 INFO:Received POST request on /preferences/1 for user_id: 1
+2025-02-04 15:23:10,532 INFO:Read data from data\movies.json.
+2025-02-04 15:23:10,532 INFO:Read data from data\preferences.json.
+2025-02-04 15:23:10,533 INFO:Wrote data to data\preferences.json.
+2025-02-04 15:23:10,533 INFO:Saved preferences for user_id: 1
+2025-02-04 15:23:11,020 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 15:23:11,020 INFO:Read data from data\movies.json.
+2025-02-04 15:23:11,021 INFO:Returning 20 movies
+2025-02-04 15:23:13,087 INFO:Received GET request on /preferences/1 for user_id: 1
+2025-02-04 15:23:13,091 INFO:Read data from data\preferences.json.
+2025-02-04 15:23:13,092 INFO:Read data from data\movies.json.
+2025-02-04 15:23:13,093 INFO:Received GET request on /movies from 127.0.0.1
+2025-02-04 15:23:13,093 INFO:Read data from data\movies.json.
+2025-02-04 15:23:13,093 INFO:Returning 20 movies

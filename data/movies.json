@@ -1,0 +1,29 @@
+[
+    {"id": 1, "title": "The Dark Knight", "genre": "Action", "release_date": "2008-07-18"},
+    {"id": 2, "title": "Mad Max: Fury Road", "genre": "Action", "release_date": "2015-05-15"},
+    {"id": 3, "title": "John Wick", "genre": "Action", "release_date": "2014-10-24"},
+    
+    {"id": 4, "title": "The Shawshank Redemption", "genre": "Drama", "release_date": "1994-09-23"},
+    {"id": 5, "title": "Forrest Gump", "genre": "Drama", "release_date": "1994-07-06"},
+    {"id": 6, "title": "The Godfather", "genre": "Drama", "release_date": "1972-03-24"},
+    
+    {"id": 7, "title": "Inception", "genre": "Sci-Fi", "release_date": "2010-07-16"},
+    {"id": 8, "title": "The Matrix", "genre": "Sci-Fi", "release_date": "1999-03-31"},
+    {"id": 9, "title": "Interstellar", "genre": "Sci-Fi", "release_date": "2014-11-07"},
+    
+    {"id": 10, "title": "The Hangover", "genre": "Comedy", "release_date": "2009-06-05"},
+    {"id": 11, "title": "Superbad", "genre": "Comedy", "release_date": "2007-08-17"},
+    {"id": 12, "title": "Bridesmaids", "genre": "Comedy", "release_date": "2011-05-13"},
+    
+    {"id": 13, "title": "The Conjuring", "genre": "Horror", "release_date": "2013-07-19"},
+    {"id": 14, "title": "Get Out", "genre": "Horror", "release_date": "2017-02-24"},
+    {"id": 15, "title": "A Quiet Place", "genre": "Horror", "release_date": "2018-04-06"},
+    
+    {"id": 16, "title": "The Notebook", "genre": "Romance", "release_date": "2004-06-25"},
+    {"id": 17, "title": "La La Land", "genre": "Romance", "release_date": "2016-12-09"},
+    
+    {"id": 18, "title": "Pulp Fiction", "genre": "Crime", "release_date": "1994-10-14"},
+    {"id": 19, "title": "The Departed", "genre": "Crime", "release_date": "2006-10-06"},
+    
+    {"id": 20, "title": "Toy Story", "genre": "Animation", "release_date": "1995-11-22"}
+]
