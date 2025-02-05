@@ -4,21 +4,20 @@ A microservices-based CLI for discovering, tracking, and getting personalized mo
 
 ## Technologies Used
 
-### Backend
+### Core Dependencies
 - **Python 3.13.1** - Core programming language
-- **Flask** - Web framework for RESTful API
+- **Flask** - Web framework for server
+- **Flask-CORS** - CORS support for Flask
+- **Requests** - HTTP client for client.py
+- **Werkzeug** - Required by Flask
+- **Click** - Required by Flask
+
+### CLI Interface
 - **cmd** - Python library for CLI interface
-- **JSON** - Data storage format
-- **requests** - HTTP client for service communication
-- **subprocess** - Process management for server/client
+- **colorama** - Terminal colors (Windows support, optional)
 
-### Frontend
-- **Python cmd module** - Interactive command-line interface
-- **argparse** - Command-line argument parsing
-- **colorama** - Terminal text formatting (optional)
-
-### Database
-- **JSON files** - Local data storage
+### Data Storage
+- **JSON files** - Local data persistence
   - movies.json - Movie database
   - preferences.json - User preferences
   - history.json - Watch history
@@ -28,12 +27,9 @@ A microservices-based CLI for discovering, tracking, and getting personalized mo
 - **Git** - Version control
 - **GitHub** - Repository hosting
 - **venv** - Python virtual environment
-- **pip** - Package management
 
-### Testing & Quality
-- **pytest** - Unit testing
+### Code Quality
 - **logging** - Debug and error logging
-- **type hints** - Code documentation
 - **docstrings** - Function documentation
 
 ## Setup
@@ -313,5 +309,3 @@ Your service should:
 These files showcase:
 - Clean code architecture (client/server separation)
 - Data persistence (JSON storage)
-- Documentation (README, project plan)
-- Deployment (startup script, requirements)

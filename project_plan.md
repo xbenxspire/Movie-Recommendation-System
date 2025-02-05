@@ -33,8 +33,8 @@ This project will create a Movie Recommendation System using microservices:
 
 **Key Features:**
 - Text-based UI that's simple and works well
-- Stores data locally with SQLAlchemy
-- Quick responses with async operations
+- Stores data locally in JSON files
+- Quick responses with Flask
 - Easy to add new features
 
 **Portfolio Value:**
@@ -63,43 +63,46 @@ This project will create a Movie Recommendation System using microservices:
 - Excellent for microservices architecture
 - Better performance than Flask
 
-**Recommendation: FastAPI**
-- Better suited for microservices architecture
-- Built-in async support crucial for service communication
-- Automatic API documentation helps with team coordination
-- Type validation reduces potential integration issues
-- Modern features showcase advanced Python knowledge
+**Recommendation: Flask**
+- Simple and mature web framework
+- Perfect for RESTful APIs
+- Large ecosystem of extensions
+- Easy to understand and maintain
+- Great for microservices architecture
 
 ### Technology Stack
 
-**Main Program:**
-- FastAPI for backend API
-- Python 3.13.1 (already installed)
-- Jinja2 templates for server-side rendering
-- Optional: Simple JavaScript for frontend interactivity
-- SQLAlchemy for any data persistence needs
+**Core Dependencies:**
+- Python 3.13.1 - Core programming language
+- Flask - Web framework for server
+- Flask-CORS - CORS support for Flask
+- Requests - HTTP client for client.py
+- Werkzeug - Required by Flask
+- Click - Required by Flask
 
-**Microservices:**
-- FastAPI for Python-based services
-- Pydantic for data validation
-- HTTPX for async HTTP calls
-- Docker for containerization (optional)
-- Can integrate with teammate's services regardless of their stack
+**CLI Interface:**
+- cmd - Python library for CLI interface
+- colorama - Terminal colors (Windows support, optional)
+
+**Data Storage:**
+- JSON files for local data persistence
+  - movies.json - Movie database
+  - preferences.json - User preferences
+  - history.json - Watch history
 
 **Development Environment:**
-- VS Code
-- Poetry for dependency management
-- Pytest for testing
-- Black for code formatting
-- Uvicorn as ASGI server
+- VS Code - Primary IDE
+- Git - Version control
+- GitHub - Repository hosting
+- venv - Python virtual environment
+
+**Code Quality:**
+- logging - Debug and error logging
+- docstrings - Function documentation
 
 **VS Code Extensions:**
 - "Python" by Microsoft (includes Pylance)
-- "Python Test Explorer for Visual Studio Code" by Little Fox Team
-- "autoDocstring - Python Docstring Generator" by Nils Werner
-- "YAML" by Red Hat
-- "Even Better TOML" by tamasfe (for Poetry's pyproject.toml)
-- "Black Formatter" by Microsoft (for Python formatting)
+- "autoDocstring - Python Docstring Generator"
 
 ## Project Timeline
 
@@ -173,31 +176,24 @@ This project will create a Movie Recommendation System using microservices:
 
 ## Communication Protocol
 
-- RESTful API endpoints using FastAPI
-- Automatic OpenAPI/Swagger documentation
-- JSON data format with Pydantic validation
-- Async communication between services
-- Type-safe request/response models
-- Standardized error responses
-- Health check endpoints with FastAPI dependencies
+- RESTful API endpoints using Flask
+- JSON data format for all communication
+- Synchronous HTTP communication
+- Clear error responses
+- Health check endpoints
 
 **CORS Configuration:**
 ```python
-# FastAPI CORS setup in each service
-from fastapi.middleware.cors import CORSMiddleware
+# Flask CORS setup
+from flask_cors import CORS
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # Restrict to specific origins in production
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 ```
 - Development: Allow all origins for easy testing
-- Production: Restrict to specific service origins
-- Middleware configuration in each microservice
-- Built-in FastAPI CORS support (no extra packages needed)
+- Production: Configure CORS with specific origins
+- Simple middleware configuration
+- Flask-CORS extension for CORS support
 
 ## Testing Strategy
 
@@ -313,29 +309,23 @@ Each service:
 
 1. Share microservice ideas with teammates
 2. Set up development environment:
-   - Install Poetry: `pip install poetry`
+   - Create virtual environment: `python -m venv venv`
    - Configure VS Code settings for Python 3.13.1
    - Install recommended VS Code extensions
-   - Set up FastAPI and dependencies via Poetry:
-     ```
-     poetry new project
-     cd project
-     poetry add fastapi uvicorn jinja2 sqlalchemy httpx pytest black
-     ```
+   - Install dependencies: `pip install -r requirements.txt`
+
 3. Create project structure:
    ```
    project/
-   ├── main_program/
-   │   ├── app/
-   │   │   ├── __init__.py
-   │   │   ├── main.py
-   │   │   ├── api/
-   │   │   ├── models/
-   │   │   └── templates/
-   │   ├── tests/
-   │   └── pyproject.toml
+   ├── client.py          # CLI interface
+   ├── server.py          # Flask API
+   ├── start.py           # Startup script
+   ├── data/
+   │   ├── movies.json
+   │   ├── preferences.json
+   │   └── history.json
    ├── microservices/
-   │   ├── service_a/  # For teammate
+   │   ├── service_a/     # For teammate
    │   ├── service_b/
    │   ├── service_c/
    │   └── service_d/
@@ -343,4 +333,4 @@ Each service:
    ```
 4. Start UI design with inclusivity focus
 5. Coordinate microservice requirements
-6. Begin FastAPI implementation
+6. Begin Flask implementation
