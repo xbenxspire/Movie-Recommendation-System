@@ -1,7 +1,7 @@
 """
-Movie Tracking System Client
----------------------------
-An interactive command-line interface for the movie tracking system.
+Movie Recommendation System Client
+--------------------------------
+An interactive command-line interface for the movie recommendation system.
 """
 
 import cmd
@@ -12,11 +12,11 @@ from typing import List, Optional
 from urllib.parse import quote
 
 class MovieCLI(cmd.Cmd):
-    """Interactive CLI for movie tracking system"""
+    """Interactive CLI for movie recommendation system"""
     
     intro = """
-Welcome to the client Movie Recommendation System!
-Track and discover movies you'll love.
+Welcome to the Movie Recommendation System!
+Discover and get personalized movie recommendations you'll love.
 
 ⏱️  Quick commands - each takes <1 second to run
 
@@ -34,7 +34,7 @@ Available Commands:
 
 Type 'help <command>' for more details about a specific command.
 """
-    prompt = 'movies> '
+    prompt = 'Command: '
     
     def __init__(self):
         """Initialize CLI with base URL and current user"""
@@ -42,6 +42,21 @@ Type 'help <command>' for more details about a specific command.
         self.base_url = "http://127.0.0.1:8000"  # Use 127.0.0.1 instead of localhost
         self.current_user = 1  # Simplified for demo
         self.session = requests.Session()  # Use session for connection pooling
+
+    def show_available_commands(self):
+        """Show available commands to help users navigate"""
+        print("\nAvailable commands:")
+        print("  movies          - List all available movies")
+        print("  search <title>  - Search for movies")
+        print("  genres          - List all available genres")
+        print("  set preferences <genres> - Set your genre preferences")
+        print("  remove preferences <genres> - Remove genre preferences")
+        print("  preferences     - View movies in your preferred genres")
+        print("  watch <ids>     - Add movies to history (e.g., watch 1 2 3)")
+        print("  history         - View watch history")
+        print("  help            - Show detailed help")
+        print("  quit/exit       - Exit the program")
+        print("\nType 'help <command>' for more details about a command.")
 
     def do_movies(self, arg):
         """List all available movies
@@ -67,6 +82,7 @@ Type 'help <command>' for more details about a specific command.
                 print("-" * 50)
             
             print("\nTip: Use 'watch <movie_id>' to add to history")
+            self.show_available_commands()
         except requests.exceptions.HTTPError as e:
             print(f"Server error: {e.response.status_code}")
             if e.response.text:
@@ -75,9 +91,11 @@ Type 'help <command>' for more details about a specific command.
                     print(f"Error details: {error_data.get('error', 'Unknown error')}")
                 except:
                     print(f"Error details: {e.response.text}")
+            self.show_available_commands()
         except requests.exceptions.RequestException as e:
             print(f"Error connecting to server: {str(e)}")
             print("Make sure the server is running on http://127.0.0.1:8000")
+            self.show_available_commands()
 
     def do_search(self, arg):
         """Search for movies by title
@@ -87,6 +105,7 @@ Type 'help <command>' for more details about a specific command.
         """
         if not arg:
             print("Please provide a search term")
+            self.show_available_commands()
             return
             
         try:
@@ -109,6 +128,7 @@ Type 'help <command>' for more details about a specific command.
             else:
                 print("No movies found matching your search.")
                 print("Try: searching by partial title or use 'movies' to see all available movies")
+            self.show_available_commands()
         except requests.exceptions.HTTPError as e:
             print(f"Server error: {e.response.status_code}")
             if e.response.text:
@@ -117,9 +137,11 @@ Type 'help <command>' for more details about a specific command.
                     print(f"Error details: {error_data.get('error', 'Unknown error')}")
                 except:
                     print(f"Error details: {e.response.text}")
+            self.show_available_commands()
         except requests.exceptions.RequestException as e:
             print(f"Error connecting to server: {str(e)}")
             print("Make sure the server is running on http://127.0.0.1:8000")
+            self.show_available_commands()
 
     def do_set(self, arg):
         """Set your genre preferences
@@ -131,12 +153,14 @@ Type 'help <command>' for more details about a specific command.
         if not args or args[0] != 'preferences':
             print("Usage: set preferences <genre1> <genre2> ...")
             print("Example: set preferences Action Sci-Fi")
+            self.show_available_commands()
             return
         
         # Remove 'preferences' from args
         genres = args[1:]
         if not genres:
             print("Please provide genre preferences")
+            self.show_available_commands()
             return
             
         try:
@@ -159,6 +183,7 @@ Type 'help <command>' for more details about a specific command.
             else:
                 print(result.get('message', 'Preferences saved successfully!'))
                 print("Use 'preferences' to view movies in your preferred genres")
+            self.show_available_commands()
         except requests.exceptions.HTTPError as e:
             print(f"Server error: {e.response.status_code}")
             if e.response.text:
@@ -167,9 +192,11 @@ Type 'help <command>' for more details about a specific command.
                     print(f"Error details: {error_data.get('error', 'Unknown error')}")
                 except:
                     print(f"Error details: {e.response.text}")
+            self.show_available_commands()
         except requests.exceptions.RequestException as e:
             print(f"Error connecting to server: {str(e)}")
             print("Make sure the server is running on http://127.0.0.1:8000")
+            self.show_available_commands()
 
     def do_remove(self, arg):
         """Remove specific genre preferences
@@ -181,12 +208,14 @@ Type 'help <command>' for more details about a specific command.
         if not args or args[0] != 'preferences':
             print("Usage: remove preferences <genre1> <genre2> ...")
             print("Example: remove preferences Horror Comedy")
+            self.show_available_commands()
             return
         
         # Remove 'preferences' from args
         genres_to_remove = set(args[1:])
         if not genres_to_remove:
             print("Please provide genres to remove")
+            self.show_available_commands()
             return
             
         try:
@@ -213,6 +242,7 @@ Type 'help <command>' for more details about a specific command.
                 print(f"Current preferences: {', '.join(updated_prefs)}")
             else:
                 print("No preferences remaining")
+            self.show_available_commands()
         except requests.exceptions.HTTPError as e:
             print(f"Server error: {e.response.status_code}")
             if e.response.text:
@@ -221,9 +251,11 @@ Type 'help <command>' for more details about a specific command.
                     print(f"Error details: {error_data.get('error', 'Unknown error')}")
                 except:
                     print(f"Error details: {e.response.text}")
+            self.show_available_commands()
         except requests.exceptions.RequestException as e:
             print(f"Error connecting to server: {str(e)}")
             print("Make sure the server is running on http://127.0.0.1:8000")
+            self.show_available_commands()
 
     def do_preferences(self, arg):
         """View movies filtered by your preferences
@@ -234,6 +266,7 @@ Type 'help <command>' for more details about a specific command.
             print("Usage: preferences")
             print("To set preferences, use: set preferences <genre1> <genre2> ...")
             print("To remove preferences, use: remove preferences <genre1> <genre2> ...")
+            self.show_available_commands()
             return
         try:
             # Get user preferences
@@ -249,6 +282,7 @@ Type 'help <command>' for more details about a specific command.
                 print("2. Set preferences with: set preferences <genre1> <genre2> ...")
                 print("   Example: set preferences Action Sci-Fi")
                 print("   Note: Genre names are case-insensitive (e.g., 'action' = 'Action')")
+                self.show_available_commands()
                 return
             
             # Get all movies
@@ -279,6 +313,7 @@ Type 'help <command>' for more details about a specific command.
                 print("2. Update preferences with: set preferences <genre1> <genre2> ...")
                 print("   Example: set preferences Action Sci-Fi")
                 print("   Note: Genre names are case-insensitive (e.g., 'action' = 'Action')")
+            self.show_available_commands()
         except requests.exceptions.HTTPError as e:
             print(f"Server error: {e.response.status_code}")
             if e.response.text:
@@ -287,9 +322,11 @@ Type 'help <command>' for more details about a specific command.
                     print(f"Error details: {error_data.get('error', 'Unknown error')}")
                 except:
                     print(f"Error details: {e.response.text}")
+            self.show_available_commands()
         except requests.exceptions.RequestException as e:
             print(f"Error connecting to server: {str(e)}")
             print("Make sure the server is running on http://127.0.0.1:8000")
+            self.show_available_commands()
 
     def do_watch(self, arg):
         """Add movies to your watch history
@@ -301,12 +338,14 @@ Type 'help <command>' for more details about a specific command.
         """
         if not arg:
             print("Please provide at least one movie ID")
+            self.show_available_commands()
             return
             
         movie_ids = []
         for id_str in arg.split():
             if not id_str.isdigit():
                 print(f"Invalid movie ID: {id_str}")
+                self.show_available_commands()
                 return
             movie_ids.append(int(id_str))
             
@@ -330,6 +369,7 @@ Type 'help <command>' for more details about a specific command.
             except requests.exceptions.RequestException as e:
                 print(f"Movie {movie_id} - Error connecting to server: {str(e)}")
                 print("Make sure the server is running on http://127.0.0.1:8000")
+        self.show_available_commands()
 
     def undo_last_watch(self, undo_token: str):
         """Remove last watched movie from history
@@ -345,6 +385,7 @@ Type 'help <command>' for more details about a specific command.
             
             result = response.json()
             print(result.get('message', 'Last watch entry removed successfully!'))
+            self.show_available_commands()
         except requests.exceptions.HTTPError as e:
             print(f"Server error: {e.response.status_code}")
             if e.response.text:
@@ -353,9 +394,11 @@ Type 'help <command>' for more details about a specific command.
                     print(f"Error details: {error_data.get('error', 'Unknown error')}")
                 except:
                     print(f"Error details: {e.response.text}")
+            self.show_available_commands()
         except requests.exceptions.RequestException as e:
             print(f"Error connecting to server: {str(e)}")
             print("Make sure the server is running on http://127.0.0.1:8000")
+            self.show_available_commands()
 
     def do_history(self, arg):
         """View your watch history
@@ -371,6 +414,7 @@ Type 'help <command>' for more details about a specific command.
             history = response.json()
             if not history:
                 print("No watch history found.")
+                self.show_available_commands()
                 return
             
             print("\nWatch History:")
@@ -379,6 +423,7 @@ Type 'help <command>' for more details about a specific command.
                 print(f"Title: {movie['title']}")
                 print(f"Watched on: {movie['watched_date'][:10]}")
                 print("-" * 50)
+            self.show_available_commands()
         except requests.exceptions.HTTPError as e:
             print(f"Server error: {e.response.status_code}")
             if e.response.text:
@@ -387,9 +432,11 @@ Type 'help <command>' for more details about a specific command.
                     print(f"Error details: {error_data.get('error', 'Unknown error')}")
                 except:
                     print(f"Error details: {e.response.text}")
+            self.show_available_commands()
         except requests.exceptions.RequestException as e:
             print(f"Error connecting to server: {str(e)}")
             print("Make sure the server is running on http://127.0.0.1:8000")
+            self.show_available_commands()
 
     def do_genres(self, arg):
         """List all available genres
@@ -412,9 +459,11 @@ Type 'help <command>' for more details about a specific command.
             print("- Use 'set preferences <genre1> <genre2> ...' to set your preferences")
             print("- Use 'remove preferences <genre1> <genre2> ...' to remove specific genre preferences")
             print("- Use 'preferences' to view movies in your preferred genres")
+            self.show_available_commands()
         except requests.exceptions.RequestException as e:
             print(f"Error connecting to server: {str(e)}")
             print("Make sure the server is running on http://127.0.0.1:8000")
+            self.show_available_commands()
 
     def do_help(self, arg):
         """Show help about commands
@@ -426,18 +475,7 @@ Type 'help <command>' for more details about a specific command.
             # Show help about a specific command
             super().do_help(arg)
         else:
-            print("\nAvailable commands:")
-            print("  movies          - List all available movies")
-            print("  search <title>  - Search for movies")
-            print("  genres          - List all available genres")
-            print("  set preferences <genres> - Set your genre preferences")
-            print("  remove preferences <genres> - Remove genre preferences")
-            print("  preferences     - View movies in your preferred genres")
-            print("  watch <ids>     - Add movies to history (e.g., watch 1 2 3)")
-            print("  history         - View watch history")
-            print("  help            - Show this help")
-            print("  quit            - Exit the program")
-            print("\nType 'help <command>' for more details about a command.")
+            self.show_available_commands()
 
     def do_quit(self, arg):
         """Exit the program"""
@@ -451,11 +489,11 @@ Type 'help <command>' for more details about a specific command.
     def default(self, line):
         """Handle unknown commands"""
         print(f"Unknown command: {line}")
-        print("Type 'help' to see available commands.")
+        self.show_available_commands()
 
     def emptyline(self):
-        """Do nothing on empty line"""
-        pass
+        """Show available commands on empty line to help users"""
+        self.show_available_commands()
 
 if __name__ == "__main__":
     try:
