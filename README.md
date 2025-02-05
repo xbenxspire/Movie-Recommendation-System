@@ -51,7 +51,7 @@ This will open two windows:
 
 Once you start the client, you'll see a welcome message and a prompt:
 ```
-Welcome to MovieCLI!
+Welcome to the client Movie Recommendation System!
 Track and discover movies you'll love.
 
 ⏱️  Quick commands - each takes <1 second to run
