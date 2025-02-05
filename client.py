@@ -224,8 +224,8 @@ Type 'help <command>' for more details about a specific command.
             response.raise_for_status()
             current_prefs = response.json().get('preferred_genres', [])
             
-            # Remove specified genres
-            updated_prefs = [g for g in current_prefs if g not in genres_to_remove]
+            # Remove specified genres (case-insensitive)
+            updated_prefs = [g for g in current_prefs if not any(r.lower() == g.lower() for r in genres_to_remove)]
             
             # Update preferences
             data = {
