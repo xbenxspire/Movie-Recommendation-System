@@ -59,63 +59,63 @@ Track and discover movies you'll love.
 
 ### Available Commands
 
-At the `movies>` prompt, you can use these commands:
+At the `Command: ` prompt, you can use these commands:
 
 1. **List All Movies**
 ```
-movies> movies
+Command: movies
 ```
 
 2. **Search for Movies**
 ```
-movies> search "Dark Knight"
+Command: search "Dark Knight"
 ```
 
 3. **View Available Genres**
 ```
-movies> genres
+Command: genres
 ```
 
 4. **Set Genre Preferences**
 ```
-movies> set preferences Action Sci-Fi
+Command: set preferences Action Sci-Fi
 ```
 Note: Genre names are case-insensitive (e.g., 'action' = 'Action')
 
 5. **Remove Genre Preferences**
 ```
-movies> remove preferences Horror Comedy
+Command: remove preferences Horror Comedy
 ```
 
 6. **View Movies by Preferences**
 ```
-movies> preferences
+Command: preferences
 ```
 
 7. **Add Movies to Watch History**
 ```
-movies> watch 1          # Add one movie
-movies> watch 1 2 3      # Add multiple movies
+Command: watch 1          # Add one movie
+Command: watch 1 2 3      # Add multiple movies
 ```
 
 8. **View Watch History**
 ```
-movies> history
+Command: history
 ```
 
 9. **Get Help**
 ```
-movies> help             # List all commands
-movies> help search      # Get help for specific command
+Command: help             # List all commands
+Command: help search      # Get help for specific command
 ```
 
 10. **Exit the Program**
 ```
-movies> quit
+Command: quit
 ```
 or
 ```
-movies> exit
+Command: exit
 ```
 
 ## Features
@@ -232,9 +232,9 @@ pip install -r requirements.txt
 python start.py
 
 # Try some commands in the client window:
-movies> movies
-movies> search "Dark Knight"
-movies> help
+Command: movies
+Command: search "Dark Knight"
+Command: help
 ```
 
 ### 3. Create Your Microservice
