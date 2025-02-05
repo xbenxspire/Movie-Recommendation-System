@@ -1,119 +1,86 @@
 # Assignment 5 Video Script
 
 ## Introduction (0:00-0:15)
-"Hi, I'm demonstrating my Movie Tracking System for CS361 Assignment 5. This CLI application showcases user stories, inclusivity heuristics, and quality attributes."
+"Hi, I'm demonstrating my Movie Recommendation System for CS361 Assignment 5. Let me show you how it satisfies the requirements through user stories, inclusivity heuristics, and quality attributes."
 
-## System Overview (0:15-0:30)
-"The system uses a client-server architecture with JSON data storage. Let me show you how to start it."
-[Demo running start.bat]
-"This opens both the server and client windows."
+## User Stories (0:15-1:00)
 
-## User Stories (0:30-1:30)
-
-### Movie Search (0:30-0:50)
-"First user story: Movie search functionality. Watch how I can search for movies:"
+### Movie Search (0:15-0:30)
+"For my first user story: As a movie fan, I want to search for movies by title so that I can find specific films I'm interested in. Given the user is at the movies prompt, when they search for 'Dark Knight', then they see the movie details including ID, title, genre, and release date."
 ```
 movies> search "Dark Knight"
 ```
-"Notice the detailed results including ID, title, genre, and release date."
 
-### Genre Preferences (0:50-1:10)
-"Second user story: Genre preference management. Users can set and update preferences:"
+### Genre Management (0:30-0:45)
+"For my second user story: As a user, I want to set my genre preferences so that I can focus on movies I enjoy. Given the user knows their preferred genres, when they set preferences to Action and Sci-Fi, then they see only movies from those genres."
 ```
 movies> set preferences Action Sci-Fi
 movies> preferences
 ```
-"The system shows movies matching these genres, with case-insensitive matching."
 
-### Watch History (1:10-1:30)
-"Third user story: Watch history tracking. Users can add movies and view their history:"
+### Watch History (0:45-1:00)
+"For my third user story: As a movie viewer, I want to track my watch history so that I can remember what I've watched. Given the user has found movies they like, when they add movies to their history, then they can view their complete watch history with dates."
 ```
 movies> watch 1 2 3
 movies> history
 ```
-"You can add multiple movies at once, and each entry includes the watch date."
 
-## Inclusivity Heuristics (1:30-3:30)
+## Inclusivity Heuristics (1:00-3:00)
 
-### Value Communication (1:30-1:45)
-"For value communication, notice the welcome message explaining benefits:"
-[Show welcome message]
-"It clearly states the system's purpose: tracking and discovering movies."
+### Value Communication (1:00-1:15)
+"For Inclusivity Heuristic #1: Here's the welcome message explaining the value: 'Discover and get personalized movie recommendations you'll love.'"
 
-### Cost Transparency (1:45-2:00)
-"For cost transparency, we show command timing estimates:"
-[Point to '⏱️ Quick commands' message]
-"Users know each command takes less than a second."
+### Cost Transparency (1:15-1:30)
+"For Inclusivity Heuristic #2: Here we show command timing estimates with '⏱️ Quick commands - each takes <1 second to run'"
 
-### Content Control (2:00-2:15)
-"Users have full control over their content through preferences:"
+### Content Control (1:30-1:45)
+"For Inclusivity Heuristic #3: Users can control their content by setting and removing genre preferences:"
 ```
-movies> genres
 movies> set preferences Action
 movies> remove preferences Action
 ```
 
-### Familiar Patterns (2:15-2:30)
-"The CLI uses familiar command patterns:"
-```
-movies> help
-movies> quit
-```
-"Similar to popular tools like git or npm."
+### Familiar Patterns (1:45-2:00)
+"For Inclusivity Heuristic #4: The CLI uses familiar command patterns like help and quit, similar to git or npm."
 
-### Error Recovery (2:30-2:45)
-"For error handling, watch how it handles invalid genres:"
+### Error Recovery (2:00-2:15)
+"For Inclusivity Heuristic #5: Users can recover from errors. Watch how it handles invalid input:"
 ```
 movies> set preferences InvalidGenre
 ```
-"It shows valid options and explains case-insensitivity."
 
-### Clear Next Steps (2:45-3:00)
-"After each command, the system suggests next steps:"
+### Clear Next Steps (2:15-2:30)
+"For Inclusivity Heuristic #6: After each command, the system suggests next steps."
 [Show command tips]
-"Making it easy to learn and use."
 
-### Multiple Pathways (3:00-3:15)
-"Users can accomplish tasks in multiple ways:"
+### Multiple Pathways (2:30-2:45)
+"For Inclusivity Heuristic #7: Users can accomplish tasks in multiple ways:"
 ```
 movies> search Dark
 movies> search "Dark Knight"
 ```
-"Supporting different search styles."
 
-### Mistake Prevention (3:15-3:30)
-"The system prevents mistakes through validation:"
+### Mistake Prevention (2:45-3:00)
+"For Inclusivity Heuristic #8: The system prevents mistakes through validation:"
 ```
 movies> watch abc
 ```
-"Showing clear error messages and recovery steps."
 
-## Quality Attributes (3:30-4:30)
+## Quality Attributes (3:00-3:45)
 
-### Maintainability (3:30-3:50)
-"For maintainability, the code is modular and well-documented:"
-[Show client.py and server.py structure]
-"Each function has a single responsibility and clear documentation."
+### Maintainability (3:00-3:15)
+"For maintainability: The non-functional requirement is 'Code must have modular structure and consistent formatting.' As you can see in server.py and client.py, functions are organized by responsibility with consistent documentation and formatting patterns."
 
-### Performance (3:50-4:10)
-"For performance, commands execute quickly:"
+### Performance (3:15-3:30)
+"For performance: The non-functional requirement is 'Commands must execute in under 1 second.' Watch these rapid commands execute instantly:"
 [Demo rapid commands]
-"Notice the sub-second response times for all operations."
 
-### Reliability (4:10-4:30)
-"For reliability, all errors are properly handled:"
+### Reliability (3:30-3:45)
+"For reliability: The non-functional requirement is 'All errors must be handled gracefully.' Watch how the system handles various error scenarios while remaining stable:"
 [Demo error scenarios]
-"The system remains stable and provides helpful feedback."
 
-## Technical Features (4:30-4:45)
-"Additional technical features include:"
-- "Client-server architecture"
-- "JSON data persistence"
-- "RESTful API design"
-- "Case-insensitive matching"
-
-## Closing (4:45-5:00)
-"This system demonstrates clean architecture, user-focused design, and robust error handling. Thank you for watching."
+## Closing (3:45-4:00)
+"This system demonstrates working functionality that provides real value to users through an inclusive, maintainable, and reliable design. Thank you for watching."
 
 ## Demo Preparation
 1. Clear any existing data files

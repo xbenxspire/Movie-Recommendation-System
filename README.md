@@ -180,8 +180,24 @@ movies> exit
 ### Quality Attributes
 1. **Maintainability**
    - Modular code structure
+     - Server.py demonstrates clear separation of concerns:
+       - Distinct functions for data operations (read_json_file, write_json_file)
+       - Separate route handlers for each API endpoint
+       - Modular error handling and logging
+       - Clean configuration management
+     - Client.py shows organized command structure:
+       - Individual methods for each CLI command
+       - Reusable error handling patterns
+       - Consistent command parsing logic
    - Clear documentation
+     - Comprehensive docstrings for all functions
+     - Detailed API endpoint descriptions
+     - Usage examples in command help text
    - Consistent formatting
+     - Uniform indentation and spacing
+     - Standard naming conventions
+     - Regular code organization patterns
+     - Predictable function structures
 
 2. **Performance**
    - Quick command execution
