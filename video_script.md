@@ -8,21 +8,21 @@
 ### Movie Search (0:15-0:30)
 "For my first user story: As a movie fan, I want to search for movies by title so that I can find specific films I'm interested in. Given the user is at the movies prompt, when they search for 'Dark Knight', then they see the movie details including ID, title, genre, and release date."
 ```
-movies> search "Dark Knight"
+Command: search "Dark Knight"
 ```
 
 ### Genre Management (0:30-0:45)
 "For my second user story: As a user, I want to set my genre preferences so that I can focus on movies I enjoy. Given the user knows their preferred genres, when they set preferences to Action and Sci-Fi, then they see only movies from those genres."
 ```
-movies> set preferences Action Sci-Fi
-movies> preferences
+Command: set preferences Action Sci-Fi
+Command: preferences
 ```
 
 ### Watch History (0:45-1:00)
 "For my third user story: As a movie viewer, I want to track my watch history so that I can remember what I've watched. Given the user has found movies they like, when they add movies to their history, then they can view their complete watch history with dates."
 ```
-movies> watch 1 2 3
-movies> history
+Command: watch 1 2 3
+Command: history
 ```
 
 ## Inclusivity Heuristics (1:00-3:00)
@@ -36,8 +36,8 @@ movies> history
 ### Content Control (1:30-1:45)
 "For Inclusivity Heuristic #3: Users can control their content by setting and removing genre preferences:"
 ```
-movies> set preferences Action
-movies> remove preferences Action
+Command: set preferences Action
+Command: remove preferences Action
 ```
 
 ### Familiar Patterns (1:45-2:00)
@@ -46,7 +46,7 @@ movies> remove preferences Action
 ### Error Recovery (2:00-2:15)
 "For Inclusivity Heuristic #5: Users can recover from errors. Watch how it handles invalid input:"
 ```
-movies> set preferences InvalidGenre
+Command: set preferences InvalidGenre
 ```
 
 ### Clear Next Steps (2:15-2:30)
@@ -56,14 +56,14 @@ movies> set preferences InvalidGenre
 ### Multiple Pathways (2:30-2:45)
 "For Inclusivity Heuristic #7: Users can accomplish tasks in multiple ways:"
 ```
-movies> search Dark
-movies> search "Dark Knight"
+Command: search Dark
+Command: search "Dark Knight"
 ```
 
 ### Mistake Prevention (2:45-3:00)
 "For Inclusivity Heuristic #8: The system prevents mistakes through validation:"
 ```
-movies> watch abc
+Command: watch abc
 ```
 
 ## Quality Attributes (3:00-3:45)
@@ -83,8 +83,29 @@ movies> watch abc
 "This system demonstrates working functionality that provides real value to users through an inclusive, maintainable, and reliable design. Thank you for watching."
 
 ## Demo Preparation
-1. Clear any existing data files
-2. Start fresh server instance
-3. Have example commands ready
+1. Reset user data while keeping movies list:
+   ```
+   # Delete user data files (preferences and history)
+   del data/preferences.json
+   del data/history.json
+   
+   # Server will automatically recreate these as empty files
+   ```
+2. Start fresh server instance:
+   ```
+   python start.py
+   ```
+3. Have these commands ready in order:
+   - search "Dark Knight"
+   - set preferences Action Sci-Fi
+   - preferences
+   - watch 1 2 3
+   - history
+   - set preferences InvalidGenre
+   - search Dark
+   - watch abc
 4. Test error scenarios beforehand
 5. Ensure clear terminal visibility
+   - Use a dark theme if possible
+   - Maximize terminal window
+   - Clear terminal before recording (cls command)
