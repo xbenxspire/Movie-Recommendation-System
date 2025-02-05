@@ -2,6 +2,40 @@
 
 A microservices-based CLI for discovering, tracking, and getting personalized movie recommendations.
 
+## Technologies Used
+
+### Backend
+- **Python 3.13.1** - Core programming language
+- **Flask** - Web framework for RESTful API
+- **cmd** - Python library for CLI interface
+- **JSON** - Data storage format
+- **requests** - HTTP client for service communication
+- **subprocess** - Process management for server/client
+
+### Frontend
+- **Python cmd module** - Interactive command-line interface
+- **argparse** - Command-line argument parsing
+- **colorama** - Terminal text formatting (optional)
+
+### Database
+- **JSON files** - Local data storage
+  - movies.json - Movie database
+  - preferences.json - User preferences
+  - history.json - Watch history
+
+### Development Tools
+- **VS Code** - Primary IDE
+- **Git** - Version control
+- **GitHub** - Repository hosting
+- **venv** - Python virtual environment
+- **pip** - Package management
+
+### Testing & Quality
+- **pytest** - Unit testing
+- **logging** - Debug and error logging
+- **type hints** - Code documentation
+- **docstrings** - Function documentation
+
 ## Setup
 
 1. Install the required packages:
