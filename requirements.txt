@@ -1,5 +1,16 @@
+# Core Dependencies
 flask==3.0.1
 flask-cors==4.0.0
 requests==2.31.0
 werkzeug==3.0.1
 click==8.1.7
+colorama==0.4.6  # Terminal colors
+
+# Development & Testing
+pytest==7.4.4
+black==23.12.1   # Code formatting
+mypy==1.8.0      # Type checking
+
+# Documentation
+docstring-parser==0.15  # For parsing docstrings
+typing-extensions==4.9.0  # Enhanced type hints
