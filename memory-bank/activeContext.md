@@ -5,10 +5,10 @@
 The current focus is on implementing and integrating microservices for the Movie Recommendation System to meet the requirements of CS 361 Assignment 10. Specifically:
 
 1. **Microservices Implementation**:
+   - Microservice A (Movie Quotes): Integrated from teammate
    - Microservice B (Recommendation Engine): Implemented and functional
    - Microservice C (Genre Analysis): Implemented and functional
    - Microservice D (Watch History): Implemented and functional
-   - Microservice A: Awaiting integration from teammate
 
 2. **Integration Testing**:
    - Testing communication between Main Program and microservices
@@ -59,13 +59,7 @@ The current focus is on implementing and integrating microservices for the Movie
 
 ## Next Steps
 
-1. **Integrate Microservice A**:
-   - Await teammate's implementation of Microservice A
-   - Integrate with Main Program
-   - Test communication and functionality
-   - Update documentation as needed
-
-2. **Record Demo Video**:
+1. **Record Demo Video**:
    - Follow script in video_script_assignment10.md
    - Demonstrate all features and microservices
    - Show separate processes and communication
@@ -141,12 +135,7 @@ The current focus is on implementing and integrating microservices for the Movie
 
 ## Current Challenges
 
-1. **Microservice A Dependency**:
-   - Challenge: Dependent on teammate's implementation of Microservice A
-   - Mitigation: Clear communication with teammate, flexible integration approach
-   - Status: Awaiting implementation
-
-2. **Process Management**:
+1. **Process Management**:
    - Challenge: Ensuring all processes start and stop correctly
    - Mitigation: Robust start.py script, error handling
    - Status: Working but could be improved with better process monitoring
