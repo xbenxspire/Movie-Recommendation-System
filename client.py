@@ -25,7 +25,15 @@ Available Commands:
   search <title> - Search for movies (e.g., search "Dark Knight")
   watch <ids>   - Add movies to history (e.g., watch 1 or watch 1 2 3)
   history      - View your watch history
+  stats        - View your watching statistics (from Microservice D)
+  trends       - View overall watching trends (from Microservice D)
   genres       - List all available genres
+  analysis     - View detailed genre analysis (from Microservice C)
+  popular      - View most popular genres (from Microservice C)
+  recommend    - Get personalized recommendations (from Microservice B)
+  quote <title> - Get movie quote (from Microservice A)
+  quote history - View quote history (from Microservice A)
+  quote stats   - View quote genre statistics (from Microservice A)
   preferences  - View movies filtered by your preferences
   set preferences <genres> - Set your genre preferences
   remove preferences <genres> - Remove specific genre preferences
@@ -54,6 +62,14 @@ Type 'help <command>' for more details about a specific command.
         print("  preferences     - View movies in your preferred genres")
         print("  watch <ids>     - Add movies to history (e.g., watch 1 2 3)")
         print("  history         - View watch history")
+        print("  stats           - View your watching statistics (Microservice D)")
+        print("  trends          - View overall watching trends (Microservice D)")
+        print("  analysis        - View detailed genre analysis (Microservice C)")
+        print("  popular         - View most popular genres (Microservice C)")
+        print("  recommend       - Get personalized recommendations (Microservice B)")
+        print("  quote <title>   - Get movie quote (Microservice A)")
+        print("  quote history   - View quote history (Microservice A)")
+        print("  quote stats     - View quote genre statistics (Microservice A)")
         print("  help            - Show detailed help")
         print("  quit/exit       - Exit the program")
         print("\nType 'help <command>' for more details about a command.")
@@ -491,6 +507,337 @@ Type 'help <command>' for more details about a specific command.
         print(f"Unknown command: {line}")
         self.show_available_commands()
 
+    def do_recommend(self, arg):
+        """Get personalized movie recommendations from Microservice B
+        
+        Usage: recommend
+        """
+        try:
+            # Get user preferences
+            response = self.session.get(f"{self.base_url}/preferences/{self.current_user}")
+            response.raise_for_status()
+            data = response.json()
+            preferred_genres = data.get('preferred_genres', [])
+            
+            # Call Microservice B (Recommendation Engine)
+            recommendation_data = {
+                "user_id": self.current_user,
+                "preferred_genres": preferred_genres
+            }
+            response = self.session.post(
+                "http://127.0.0.1:8001/recommend",  # Microservice B endpoint
+                json=recommendation_data
+            )
+            response.raise_for_status()
+            
+            recommendations = response.json()
+            
+            if 'recommendations' in recommendations and recommendations['recommendations']:
+                print("\nPersonalized Recommendations for You:")
+                print("-" * 50)
+                for movie in recommendations['recommendations']:
+                    print(f"ID: {movie['id']}")
+                    print(f"Title: {movie['title']}")
+                    print(f"Genre: {movie['genre']}")
+                    print(f"Score: {movie['score']}")
+                    print(f"Reason: {movie['reason']}")
+                    print("-" * 50)
+                
+                print("\nTip: Use 'watch <movie_id>' to add to history")
+            else:
+                print("\nNo recommendations available.")
+                print("Try watching more movies or setting genre preferences.")
+                print("Use 'set preferences <genre1> <genre2> ...' to set your preferences")
+            
+            self.show_available_commands()
+        except requests.exceptions.HTTPError as e:
+            print(f"Server error: {e.response.status_code}")
+            if e.response.text:
+                try:
+                    error_data = e.response.json()
+                    print(f"Error details: {error_data.get('error', 'Unknown error')}")
+                except:
+                    print(f"Error details: {e.response.text}")
+            self.show_available_commands()
+        except requests.exceptions.RequestException as e:
+            print(f"Error connecting to recommendation service: {str(e)}")
+            print("Make sure Microservice B is running on http://127.0.0.1:8001")
+            self.show_available_commands()
+
+    def do_analysis(self, arg):
+        """View detailed genre analysis from Microservice C
+        
+        Usage: analysis
+        """
+        try:
+            # Call Microservice C (Genre Analysis)
+            response = self.session.get("http://127.0.0.1:8002/genres/analysis")
+            response.raise_for_status()
+            
+            analysis = response.json()
+            
+            print("\nGenre Analysis:")
+            print("-" * 50)
+            
+            # Print genre counts
+            print("\nGenre Distribution:")
+            for genre in analysis.get('genres', []):
+                print(f"- {genre['name']}: {genre['count']} movies")
+            
+            # Print decade analysis
+            print("\nGenres by Decade:")
+            for decade in analysis.get('decades', []):
+                print(f"\n{decade['decade']} ({decade['total_movies']} movies):")
+                for genre in decade.get('top_genres', []):
+                    print(f"- {genre['name']}: {genre['count']} movies")
+            
+            print(f"\nTotal Movies: {analysis.get('total_movies', 0)}")
+            print(f"Analysis Time: {analysis.get('timestamp', '')[:19]}")
+            
+            self.show_available_commands()
+        except requests.exceptions.HTTPError as e:
+            print(f"Server error: {e.response.status_code}")
+            if e.response.text:
+                try:
+                    error_data = e.response.json()
+                    print(f"Error details: {error_data.get('error', 'Unknown error')}")
+                except:
+                    print(f"Error details: {e.response.text}")
+            self.show_available_commands()
+        except requests.exceptions.RequestException as e:
+            print(f"Error connecting to genre analysis service: {str(e)}")
+            print("Make sure Microservice C is running on http://127.0.0.1:8002")
+            self.show_available_commands()
+
+    def do_popular(self, arg):
+        """View most popular genres from Microservice C
+        
+        Usage: popular
+        """
+        try:
+            # Call Microservice C (Genre Analysis)
+            response = self.session.get("http://127.0.0.1:8002/genres/popular")
+            response.raise_for_status()
+            
+            data = response.json()
+            
+            print("\nMost Popular Genres:")
+            print("-" * 50)
+            
+            for genre in data.get('popular_genres', []):
+                print(f"- {genre['name']}: {genre['count']} movies ({genre['percentage']}%)")
+            
+            print(f"\nTotal Movies: {data.get('total_movies', 0)}")
+            
+            self.show_available_commands()
+        except requests.exceptions.HTTPError as e:
+            print(f"Server error: {e.response.status_code}")
+            if e.response.text:
+                try:
+                    error_data = e.response.json()
+                    print(f"Error details: {error_data.get('error', 'Unknown error')}")
+                except:
+                    print(f"Error details: {e.response.text}")
+            self.show_available_commands()
+        except requests.exceptions.RequestException as e:
+            print(f"Error connecting to genre analysis service: {str(e)}")
+            print("Make sure Microservice C is running on http://127.0.0.1:8002")
+            self.show_available_commands()
+
+    def do_stats(self, arg):
+        """View your watching statistics from Microservice D
+        
+        Usage: stats
+        """
+        try:
+            # Call Microservice D (Watch History)
+            response = self.session.get(f"http://127.0.0.1:8003/history/stats/{self.current_user}")
+            response.raise_for_status()
+            
+            stats = response.json()
+            
+            if 'message' in stats and 'No watch history' in stats['message']:
+                print("\nNo watch history found.")
+                print("Try watching some movies first with 'watch <movie_id>'")
+                self.show_available_commands()
+                return
+            
+            print("\nYour Watching Statistics:")
+            print("-" * 50)
+            
+            print(f"Total Movies Watched: {stats.get('total_watched', 0)}")
+            
+            if 'favorite_genre' in stats:
+                print(f"Favorite Genre: {stats['favorite_genre']}")
+            
+            if 'genre_breakdown' in stats and stats['genre_breakdown']:
+                print("\nGenre Breakdown:")
+                for genre in stats['genre_breakdown']:
+                    print(f"- {genre['name']}: {genre['count']} movies ({genre['percentage']}%)")
+            
+            if 'monthly_activity' in stats and stats['monthly_activity']:
+                print("\nMonthly Activity:")
+                for month in stats['monthly_activity']:
+                    print(f"- {month['month']}: {month['count']} movies")
+            
+            if 'avg_movies_per_month' in stats:
+                print(f"\nAverage Movies per Month: {stats['avg_movies_per_month']}")
+            
+            self.show_available_commands()
+        except requests.exceptions.HTTPError as e:
+            print(f"Server error: {e.response.status_code}")
+            if e.response.text:
+                try:
+                    error_data = e.response.json()
+                    print(f"Error details: {error_data.get('error', 'Unknown error')}")
+                except:
+                    print(f"Error details: {e.response.text}")
+            self.show_available_commands()
+        except requests.exceptions.RequestException as e:
+            print(f"Error connecting to watch history service: {str(e)}")
+            print("Make sure Microservice D is running on http://127.0.0.1:8003")
+            self.show_available_commands()
+
+    def do_trends(self, arg):
+        """View overall watching trends from Microservice D
+        
+        Usage: trends
+        """
+        try:
+            # Call Microservice D (Watch History)
+            response = self.session.get("http://127.0.0.1:8003/history/trends")
+            response.raise_for_status()
+            
+            trends = response.json()
+            
+            if 'message' in trends and 'No watch history' in trends['message']:
+                print("\nNo watch history found across users.")
+                print("Try watching some movies first with 'watch <movie_id>'")
+                self.show_available_commands()
+                return
+            
+            print("\nOverall Watching Trends:")
+            print("-" * 50)
+            
+            print(f"Total Users: {trends.get('total_users', 0)}")
+            print(f"Total Watches: {trends.get('total_watches', 0)}")
+            
+            if 'top_movies' in trends and trends['top_movies']:
+                print("\nMost Watched Movies:")
+                for movie in trends['top_movies']:
+                    print(f"- {movie['title']}: {movie['count']} watches")
+            
+            if 'top_genres' in trends and trends['top_genres']:
+                print("\nMost Watched Genres:")
+                for genre in trends['top_genres']:
+                    print(f"- {genre['name']}: {genre['count']} watches ({genre['percentage']}%)")
+            
+            if 'monthly_activity' in trends and trends['monthly_activity']:
+                print("\nMonthly Activity:")
+                for month in trends['monthly_activity']:
+                    print(f"- {month['month']}: {month['count']} watches")
+            
+            self.show_available_commands()
+        except requests.exceptions.HTTPError as e:
+            print(f"Server error: {e.response.status_code}")
+            if e.response.text:
+                try:
+                    error_data = e.response.json()
+                    print(f"Error details: {error_data.get('error', 'Unknown error')}")
+                except:
+                    print(f"Error details: {e.response.text}")
+            self.show_available_commands()
+        except requests.exceptions.RequestException as e:
+            print(f"Error connecting to watch history service: {str(e)}")
+            print("Make sure Microservice D is running on http://127.0.0.1:8003")
+            self.show_available_commands()
+            
+    def do_quote(self, arg):
+        """Get movie quotes from Microservice A
+        
+        Usage: 
+          quote <movie title> - Get quote for a specific movie
+          quote history - View all queried quotes
+          quote stats - View genre popularity statistics
+        
+        Examples:
+          quote "Batman Begins"
+          quote history
+          quote stats
+        """
+        if not arg:
+            print("Please provide a movie title or command (history/stats)")
+            print("Usage: quote <movie title> or quote history or quote stats")
+            self.show_available_commands()
+            return
+        
+        try:
+            # Call Microservice A (Movie Quotes)
+            response = self.session.get(
+                "http://127.0.0.1:5004/get_movie_quote",  # Microservice A endpoint
+                params={"input": arg}
+            )
+            response.raise_for_status()
+            
+            data = response.json()
+            
+            if arg.lower() == "history":
+                # Display quote history
+                print("\nMovie Quote History:")
+                print("-" * 50)
+                if data:
+                    for item in data:
+                        for movie, quote in item.items():
+                            print(f"Movie: {movie}")
+                            print(f"Quote: {quote}")
+                            print("-" * 50)
+                else:
+                    print("No quote history found.")
+            
+            elif arg.lower() == "stats":
+                # Display genre statistics
+                print("\nQuote Genre Statistics:")
+                print("-" * 50)
+                if data:
+                    for genre, count in data.items():
+                        print(f"- {genre}: {count} quotes")
+                else:
+                    print("No genre statistics available.")
+            
+            else:
+                # Display movie quote
+                if "error" in data:
+                    print(f"\nError: {data['error']}")
+                    print("Try with a different movie title or check if Microservice A is running.")
+                else:
+                    print("\nMovie Quote:")
+                    print("-" * 50)
+                    print(f"Movie: {data.get('movie_title', 'Unknown')}")
+                    print(f"Quote: \"{data.get('quote', 'No quote available')}\"")
+                    print(f"Character: {data.get('actor_name', 'Unknown')}")
+                    print(f"Genre: {data.get('category', 'Unknown')}")
+                    print(f"Year: {data.get('publish_date', 'Unknown')}")
+                    print(f"Context: {data.get('context', 'No context available')}")
+                    print("-" * 50)
+                    
+                    print("\nTip: Use 'quote history' to view all queried quotes")
+                    print("     Use 'quote stats' to view genre statistics")
+            
+            self.show_available_commands()
+        except requests.exceptions.HTTPError as e:
+            print(f"Server error: {e.response.status_code}")
+            if e.response.text:
+                try:
+                    error_data = e.response.json()
+                    print(f"Error details: {error_data.get('error', 'Unknown error')}")
+                except:
+                    print(f"Error details: {e.response.text}")
+            self.show_available_commands()
+        except requests.exceptions.RequestException as e:
+            print(f"Error connecting to movie quotes service: {str(e)}")
+            print("Make sure Microservice A is running on http://127.0.0.1:5004")
+            self.show_available_commands()
+    
     def emptyline(self):
         """Show available commands on empty line to help users"""
         self.show_available_commands()

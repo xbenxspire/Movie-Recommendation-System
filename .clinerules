@@ -1,0 +1,211 @@
+# Cline Rules: Movie Recommendation System
+
+## Project Patterns
+
+### Code Organization
+
+1. **Command Pattern in client.py**
+   - All CLI commands are implemented as methods with the prefix `do_`
+   - Help documentation for each command is in the method docstring
+   - Commands follow a consistent structure: validation, API call, display results
+   - Example: `do_movies`, `do_search`, `do_preferences`
+
+2. **Route Pattern in server.py and microservices**
+   - Flask routes follow RESTful API conventions
+   - Routes are organized by resource type
+   - Route functions include error handling and logging
+   - Example: `/movies`, `/preferences/{user_id}`, `/history/{user_id}`
+
+3. **Data Access Pattern**
+   - JSON files are read/written using helper functions
+   - Error handling for file operations is consistent
+   - Default values are provided for missing data
+   - Example: `read_json_file`, `write_json_file`
+
+### Naming Conventions
+
+1. **Variable Names**
+   - snake_case for variables and functions
+   - CamelCase for classes
+   - UPPER_CASE for constants
+   - Example: `movie_id`, `MovieCLI`, `DATA_DIR`
+
+2. **File Names**
+   - snake_case for Python files
+   - lowercase with hyphens for documentation files
+   - Example: `client.py`, `video_script_assignment10.md`
+
+3. **Function Names**
+   - Verb-noun format for action functions
+   - Noun format for getter functions
+   - Example: `add_to_history`, `get_preferences`
+
+### Documentation Style
+
+1. **Docstrings**
+   - Triple double-quotes for docstrings
+   - First line is a brief description
+   - Followed by detailed description if needed
+   - Parameters and return values documented
+   - Example:
+     ```python
+     def read_json_file(filename):
+         """Read and parse a JSON file.
+         
+         Args:
+             filename: Path to the JSON file
+             
+         Returns:
+             Parsed JSON data as Python object
+         """
+     ```
+
+2. **Comments**
+   - Single-line comments for explaining complex logic
+   - Comments explain "why" not "what"
+   - Example: `# Skip invalid dates to prevent parsing errors`
+
+3. **README Structure**
+   - Clear sections with hierarchical headings
+   - Code examples in fenced code blocks
+   - Command examples with expected output
+   - Example: See README.md
+
+## User Preferences
+
+### Command Line Interface
+
+1. **Command Format**
+   - Simple, intuitive commands
+   - Consistent parameter order
+   - Help text for all commands
+   - Example: `search "Dark Knight"`, `set preferences Action Sci-Fi`
+
+2. **Output Format**
+   - Clear section headers with separators
+   - Consistent indentation and alignment
+   - Tips and suggestions after operations
+   - Example: 
+     ```
+     Available Movies:
+     --------------------------------------------------
+     ID: 1
+     Title: The Dark Knight
+     Genre: Action
+     Release Date: 2008-07-18
+     --------------------------------------------------
+     ```
+
+3. **Error Messages**
+   - Clear error descriptions
+   - Suggestions for recovery
+   - Consistent formatting
+   - Example: `Error connecting to server: Connection refused. Make sure the server is running on http://127.0.0.1:8000`
+
+### Development Workflow
+
+1. **Component Testing**
+   - Test each component individually
+   - Verify API endpoints with direct calls
+   - Check error handling with invalid inputs
+   - Example: Test microservices with curl or browser
+
+2. **Integration Testing**
+   - Test communication between components
+   - Verify data flow through the system
+   - Check error propagation
+   - Example: Test client commands that use multiple microservices
+
+3. **Documentation Updates**
+   - Update README.md with new features
+   - Keep API documentation current
+   - Document known issues
+   - Example: Add new commands to README.md
+
+## Project Intelligence
+
+### Critical Implementation Paths
+
+1. **Microservices Communication**
+   - Main Program communicates with microservices via HTTP
+   - JSON data format for all communication
+   - Error handling for connection issues
+   - Example: `response = self.session.post("http://127.0.0.1:8001/recommend", json=data)`
+
+2. **Process Management**
+   - start.py launches all components as separate processes
+   - Platform-specific command execution
+   - Wait for services to initialize
+   - Example: `subprocess.Popen(['start', 'Microservice B', 'cmd', '/k', 'python microservices/service_b.py'], shell=True)`
+
+3. **Data Persistence**
+   - JSON files in data/ directory
+   - Read/write operations with error handling
+   - Default data for missing files
+   - Example: `write_json_file(MOVIES_FILE, SAMPLE_MOVIES)`
+
+### Known Challenges
+
+1. **Cross-Platform Compatibility**
+   - Different process creation on Windows vs. Unix
+   - Path separators and file handling
+   - Terminal capabilities
+   - Example: `if sys.platform == 'win32': ...`
+
+2. **Error Recovery**
+   - Connection retry logic
+   - Fallback behavior for missing data
+   - User-friendly error messages
+   - Example: `except requests.exceptions.RequestException as e: ...`
+
+3. **Microservice A Integration**
+   - Dependent on teammate's implementation
+   - May require adjustments to Main Program
+   - Need to test integration thoroughly
+   - Example: Awaiting implementation
+
+### Evolution of Project Decisions
+
+1. **Microservices Architecture**
+   - Initial design: Simple client-server
+   - Current design: Microservices architecture
+   - Reason: Meet assignment requirements, demonstrate separation of concerns
+   - Example: Four separate microservices with distinct responsibilities
+
+2. **Data Storage**
+   - Initial design: In-memory data structures
+   - Current design: JSON files
+   - Reason: Persistence between runs, simple implementation
+   - Example: movies.json, preferences.json, history.json
+
+3. **Communication Protocol**
+   - Initial design: Direct function calls
+   - Current design: REST APIs
+   - Reason: True microservices architecture, separate processes
+   - Example: HTTP requests between components
+
+## Tool Usage Patterns
+
+1. **Flask Development**
+   - Minimal Flask configuration
+   - RESTful API design
+   - JSON responses
+   - Example: `app = Flask(__name__); CORS(app)`
+
+2. **cmd Module**
+   - Command methods with do_ prefix
+   - Help documentation in docstrings
+   - Consistent command handling
+   - Example: `class MovieCLI(cmd.Cmd): ...`
+
+3. **Requests Library**
+   - Session for connection pooling
+   - JSON handling
+   - Error handling
+   - Example: `self.session = requests.Session()`
+
+4. **subprocess Module**
+   - Platform-specific process creation
+   - Named windows for clarity
+   - Wait for initialization
+   - Example: `subprocess.Popen([...], shell=True)`

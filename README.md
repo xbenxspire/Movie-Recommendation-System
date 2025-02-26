@@ -2,6 +2,23 @@
 
 A microservices-based CLI for discovering, tracking, and getting personalized movie recommendations.
 
+## Microservices Architecture
+
+This system implements a microservices architecture with the following components:
+
+1. **Main Program**: CLI-based movie search and recommendation interface
+2. **Microservice A**: Movie Quotes Service
+3. **Microservice B**: Recommendation Engine Service
+4. **Microservice C**: Genre Analysis Service
+5. **Microservice D**: Watch History Service
+
+Each microservice runs as a separate process and communicates with the main program via REST APIs:
+- Main Program: http://127.0.0.1:8000
+- Microservice A (Movie Quotes): http://127.0.0.1:5004
+- Microservice B (Recommendation): http://127.0.0.1:8001
+- Microservice C (Genre Analysis): http://127.0.0.1:8002
+- Microservice D (Watch History): http://127.0.0.1:8003
+
 ## Technologies Used
 
 ### Core Dependencies
@@ -66,7 +83,7 @@ At the `Command: ` prompt, you can use these commands:
 Command: movies
 ```
 
-2. **Search for Movies**
+2. **Search for Movies** (uses Microservice A)
 ```
 Command: search "Dark Knight"
 ```
@@ -103,13 +120,37 @@ Command: watch 1 2 3      # Add multiple movies
 Command: history
 ```
 
-9. **Get Help**
+9. **Get Personalized Recommendations** (uses Microservice B)
+```
+Command: recommend
+```
+
+10. **View Genre Analysis** (uses Microservice C)
+```
+Command: analysis         # Detailed genre analysis
+Command: popular          # Most popular genres
+```
+
+11. **View Watching Statistics** (uses Microservice D)
+```
+Command: stats            # Your watching statistics
+Command: trends           # Overall watching trends
+```
+
+12. **Get Movie Quotes** (uses Microservice A)
+```
+Command: quote "Batman Begins"  # Get quote for a specific movie
+Command: quote history          # View all queried quotes
+Command: quote stats            # View genre popularity statistics
+```
+
+13. **Get Help**
 ```
 Command: help             # List all commands
 Command: help search      # Get help for specific command
 ```
 
-10. **Exit the Program**
+13. **Exit the Program**
 ```
 Command: quit
 ```
@@ -302,12 +343,55 @@ Your service should:
 - Include clear error messages
 - Provide help documentation
 
+## Microservices Implementation
+
+### Microservice B: Recommendation Engine Service
+- **Purpose**: Processes user preferences and generates personalized movie recommendations
+- **Endpoints**:
+  - `/recommend` - Generate personalized recommendations based on user preferences
+  - `/health` - Check service health
+- **Features**:
+  - Collaborative filtering based on preferences
+  - Relevance scoring for recommendations
+  - Explanation of recommendation reasons
+
+### Microservice C: Genre Analysis Service
+- **Purpose**: Categorizes movies and identifies genre patterns
+- **Endpoints**:
+  - `/genres` - List all genres with movie counts
+  - `/genres/popular` - Get most popular genres
+  - `/genres/analysis` - Get detailed genre analysis
+  - `/genres/user/<user_id>` - Get genre analysis for specific user
+  - `/health` - Check service health
+- **Features**:
+  - Genre distribution analysis
+  - Decade-based genre trends
+  - Popularity metrics
+
+### Microservice D: Watch History Service
+- **Purpose**: Tracks user viewing history and analyzes watching patterns
+- **Endpoints**:
+  - `/history/<user_id>` - Get user watch history
+  - `/history/<user_id>/<movie_id>` - Add movie to history
+  - `/history/stats/<user_id>` - Get user watching statistics
+  - `/history/trends` - Get overall watching trends
+  - `/health` - Check service health
+- **Features**:
+  - Watch history tracking
+  - User-specific statistics
+  - Overall trend analysis
+
 ## Files for Portfolio
 
 ### Core System Files
 1. `client.py` - Interactive CLI interface
 2. `server.py` - Backend server with REST API
 3. `start.py` - Cross-platform startup script
+
+### Microservices
+1. `microservices/service_b.py` - Recommendation Engine Service
+2. `microservices/service_c.py` - Genre Analysis Service
+3. `microservices/service_d.py` - Watch History Service
 
 ### Data Files
 1. `data/movies.json` - Movie database
@@ -317,7 +401,8 @@ Your service should:
 ### Documentation
 1. `README.md` - System documentation and usage guide
 2. `project_plan.md` - Project planning and architecture
-3. `video_script.md` - Demo video script
+3. `video_script.md` - Demo video script for Assignment 5
+4. `video_script_assignment10.md` - Demo video script for Assignment 10
 
 ### Dependencies
 1. `requirements.txt` - Python package dependencies
