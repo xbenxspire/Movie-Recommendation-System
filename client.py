@@ -21,22 +21,34 @@ Discover and get personalized movie recommendations you'll love.
 ⏱️  Quick commands - each takes <1 second to run
 
 Available Commands:
+  # Main Program Commands:
   movies        - List all available movies
   search <title> - Search for movies (e.g., search "Dark Knight")
-  watch <ids>   - Add movies to history (e.g., watch 1 or watch 1 2 3)
-  history      - View your watch history
-  stats        - View your watching statistics (from Microservice D)
-  trends       - View overall watching trends (from Microservice D)
   genres       - List all available genres
-  analysis     - View detailed genre analysis (from Microservice C)
-  popular      - View most popular genres (from Microservice C)
-  recommend    - Get personalized recommendations (from Microservice B)
-  quote <title> - Get movie quote (from Microservice A)
-  quote history - View quote history (from Microservice A)
-  quote stats   - View quote genre statistics (from Microservice A)
   preferences  - View movies filtered by your preferences
   set preferences <genres> - Set your genre preferences
   remove preferences <genres> - Remove specific genre preferences
+  watch <ids>   - Add movies to history (e.g., watch 1 or watch 1 2 3)
+  history      - View your watch history
+  
+  # Microservice A (Movie Quotes):
+  quote <title> - Get movie quote (e.g., quote "Batman Begins")
+  quote available - See all available movie titles for quotes
+  quote history - View quote history
+  quote stats   - View quote genre statistics
+  
+  # Microservice B (Recommendation Engine):
+  recommend    - Get personalized recommendations
+  
+  # Microservice C (Genre Analysis):
+  analysis     - View detailed genre analysis
+  popular      - View most popular genres
+  
+  # Microservice D (Watch History):
+  stats        - View your watching statistics
+  trends       - View overall watching trends
+  
+  # General Commands:
   help         - Show detailed help for commands
   quit/exit    - Exit the program
 
@@ -54,22 +66,34 @@ Type 'help <command>' for more details about a specific command.
     def show_available_commands(self):
         """Show available commands to help users navigate"""
         print("\nAvailable commands:")
+        print("  # Main Program Commands:")
         print("  movies          - List all available movies")
         print("  search <title>  - Search for movies")
         print("  genres          - List all available genres")
+        print("  preferences     - View movies filtered by your preferences")
         print("  set preferences <genres> - Set your genre preferences")
         print("  remove preferences <genres> - Remove genre preferences")
-        print("  preferences     - View movies in your preferred genres")
         print("  watch <ids>     - Add movies to history (e.g., watch 1 2 3)")
         print("  history         - View watch history")
-        print("  stats           - View your watching statistics (Microservice D)")
-        print("  trends          - View overall watching trends (Microservice D)")
-        print("  analysis        - View detailed genre analysis (Microservice C)")
-        print("  popular         - View most popular genres (Microservice C)")
-        print("  recommend       - Get personalized recommendations (Microservice B)")
-        print("  quote <title>   - Get movie quote (Microservice A)")
-        print("  quote history   - View quote history (Microservice A)")
-        print("  quote stats     - View quote genre statistics (Microservice A)")
+        print("")
+        print("  # Microservice A (Movie Quotes):")
+        print("  quote <title>   - Get movie quote (e.g., quote \"Batman Begins\")")
+        print("  quote available - See all available movie titles for quotes")
+        print("  quote history   - View quote history")
+        print("  quote stats     - View quote genre statistics")
+        print("")
+        print("  # Microservice B (Recommendation Engine):")
+        print("  recommend       - Get personalized recommendations")
+        print("")
+        print("  # Microservice C (Genre Analysis):")
+        print("  analysis        - View detailed genre analysis")
+        print("  popular         - View most popular genres")
+        print("")
+        print("  # Microservice D (Watch History):")
+        print("  stats           - View your watching statistics")
+        print("  trends          - View overall watching trends")
+        print("")
+        print("  # General Commands:")
         print("  help            - Show detailed help")
         print("  quit/exit       - Exit the program")
         print("\nType 'help <command>' for more details about a command.")
@@ -803,6 +827,19 @@ Type 'help <command>' for more details about a specific command.
                         print(f"- {genre}: {count} quotes")
                 else:
                     print("No genre statistics available.")
+                    
+            elif arg.lower() == "available":
+                # Display available movies
+                print("\nAvailable Movies for Quotes:")
+                print("-" * 50)
+                if "available_movies" in data:
+                    for movie in data["available_movies"]:
+                        print(f"- {movie}")
+                    print("-" * 50)
+                    print(f"\nTotal Available Movies: {len(data['available_movies'])}")
+                    print("\nTip: Use 'quote \"<movie title>\"' to get a quote for a specific movie")
+                else:
+                    print("No movie list available.")
             
             else:
                 # Display movie quote
